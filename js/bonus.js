@@ -68,18 +68,23 @@ function onClickEvents(cell, bombe) {
     cell.addEventListener("click", function(){
 
         // creo una costante con l'indice per poi confrontarla con le bombe
-        const indiceCella = this.dataset.indice;
+        const indiceCella = parseInt(this.innerText);
 
         this.classList.add("clicked");
+
+        punteggio++;
+        console.log(punteggio);
 
         if (bombe.includes(indiceCella)) {
             this.classList.remove("clicked");
             this.classList.add("bombs");
             gameOver = true;
+            punteggio --;
+
             alert(`Hai perso il tuo punteggio è: ${punteggio}`);
         }
 
-        console.log(bombe);
+        console.log(parseInt(this.innerText));
     });
 }
 // Creo una variabile per recuperare il button dall'html
